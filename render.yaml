@@ -2,23 +2,17 @@ services:
   - type: web
     name: chlorine-dosing-api
     runtime: python
-    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn src.app:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: API_URL
         value: https://chlorine-dosing-api.onrender.com
-      - key: PYTHON_VERSION
-        value: 3.12.0
 
   - type: web
     name: chlorine-dosing-ui
     runtime: python
-    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: streamlit run frontend/app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
     envVars:
       - key: API_URL
         value: https://chlorine-dosing-api.onrender.com
-      - key: PYTHON_VERSION
-        value: 3.12.0
