@@ -1,0 +1,8 @@
+{
+  "pipe_diameter_mm": 50.0,
+  "pipeline_length_m": 500.0,
+  "target_residual_mgl": 2.0,
+  "tank_volume_l": 1000.0,
+  "hypochlorite_purity_pct": 65.0,
+  "hypochlorite_weight_g": 2500.0
+}

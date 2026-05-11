@@ -1,0 +1,14 @@
+{
+  "turbidity": 15.0,
+  "ph": 7.2,
+  "conductivity": 500.0,
+  "temperature": 22.0,
+  "pipe_diameter": 50.0,
+  "residual_chlorine": 0.5,
+  "target_residual": 2.0,
+  "pipeline_length": 500.0,
+  "flow_rate": 10.0,
+  "water_volume": 1000.0,
+  "purity": 65.0,
+  "weight": 2500.0
+}
