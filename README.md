@@ -106,7 +106,7 @@ src/
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/your-username/chlorine-dosing-agent.git
+git clone https://github.com/jquevedomolina/AgentCl.git
 cd chlorine-dosing-agent
 python -m venv .venv
 source .venv/bin/activate
@@ -138,6 +138,16 @@ mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow.db
 ```bash
 docker compose up --build
 ```
+
+### 🌐 Live Demo (Render)
+
+| Service | URL |
+|---|---|
+| **Frontend (UI)** | [https://chlorine-dosing-ui-4e87.onrender.com](https://chlorine-dosing-ui-4e87.onrender.com) |
+| **Backend (API)** | [https://chlorine-dosing-api-4e87.onrender.com](https://chlorine-dosing-api-4e87.onrender.com) |
+| **API Docs** | [https://chlorine-dosing-api-4e87.onrender.com/docs](https://chlorine-dosing-api-4e87.onrender.com/docs) |
+
+> ⚠️ Free tier: services sleep after 15 min of inactivity. First request may take ~30s.
 
 ---
 
