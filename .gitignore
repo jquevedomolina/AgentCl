@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Models (large binaries, regenerable)
+models/*.pkl
+models/version.txt
+
+# Data (runtime state)
+data/*.json
+data/*.csv
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# MLflow
+mlflow_data/
+mlflow.db
+mlflow/
+
+# Docker (optional — uncomment if you don't want to track)
+# docker-compose.override.yml
