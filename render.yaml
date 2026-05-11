@@ -2,6 +2,9 @@ services:
   - type: web
     name: chlorine-dosing-api
     runtime: python
+    repo: https://github.com/jquevedomolina/AgentCl
+    plan: free
+    region: oregon
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn src.app:app --host 0.0.0.0 --port $PORT
     envVars:
@@ -11,6 +14,9 @@ services:
   - type: web
     name: chlorine-dosing-ui
     runtime: python
+    repo: https://github.com/jquevedomolina/AgentCl
+    plan: free
+    region: oregon
     buildCommand: pip install -r requirements.txt
     startCommand: streamlit run frontend/app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
     envVars:
