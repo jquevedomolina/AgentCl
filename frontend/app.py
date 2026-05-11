@@ -143,21 +143,19 @@ if page == "🏠 Dashboard":
 elif page == "🧪 Dosing":
     st.title("🧪 Dosing Prediction")
 
-    # Load last form state from saved JSON
-    if "form_loaded" not in st.session_state:
-        st.session_state.form_loaded = False
-    if not st.session_state.form_loaded:
-        try:
-            fr = requests.get(f"{API_URL}/simulator/form", timeout=3)
-            if fr.status_code == 200:
-                data = fr.json()
-                if data:
-                    for k, v in data.items():
-                        if k in st.session_state:
-                            st.session_state[k] = v
-            st.session_state.form_loaded = True
-        except:
-            st.session_state.form_loaded = True
+    # Always load station config into form fields
+    try:
+        cr = requests.get(f"{API_URL}/simulator/config", timeout=3)
+        if cr.status_code == 200:
+            cfg = cr.json()
+            st.session_state.pipe_diameter = cfg["pipe_diameter_mm"]
+            st.session_state.pipeline_length = cfg["pipeline_length_m"]
+            st.session_state.target_residual = cfg["target_residual_mgl"]
+            st.session_state.water_volume = cfg["tank_volume_l"]
+            st.session_state.purity = cfg["hypochlorite_purity_pct"]
+            st.session_state.weight = cfg["hypochlorite_weight_g"]
+    except:
+        pass
 
     with st.expander("💧 Water Quality", expanded=True):
         c1, c2 = st.columns(2)
