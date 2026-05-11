@@ -29,7 +29,7 @@ class WaterDataGenerator:
         self.target_residual = 2.0
 
         # Current residual (simulated — decays over time, boosted by dosing)
-        self.current_residual = 0.5
+        self.current_residual = 1.2
 
         # Last applied dose for residual simulation
         self.last_applied_dose_mgl = 0.0
@@ -74,9 +74,11 @@ class WaterDataGenerator:
         flow_rate = round(self.base_flow_rate + self.flow_rate_rw, 2)
         flow_rate = max(1.0, min(50.0, flow_rate))
 
-        # Residual chlorine: decays, boosted by last dose
+        # Residual chlorine: random walk + decay + dosing boost
+        self.current_residual += self.rng.normal(0, 0.08)
         decay_per_tick = self.rng.uniform(0.01, 0.04)
         self.current_residual = max(0.0, self.current_residual - decay_per_tick)
+        self.current_residual = max(0.5, min(2.1, self.current_residual))
         self.current_residual = round(self.current_residual, 3)
 
         return {
@@ -95,4 +97,4 @@ class WaterDataGenerator:
         """Simulate applying chlorine dose — boosts residual chlorine."""
         self.last_applied_dose_mgl = dose_mgl
         self.current_residual += dose_mgl * 0.7
-        self.current_residual = min(5.0, self.current_residual)
+        self.current_residual = min(2.1, self.current_residual)
